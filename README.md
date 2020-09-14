@@ -36,9 +36,9 @@ fits - folder containing saved plots.
 
 ----Useful functions and Notes----:
 
--Can plot transition diagram with components using the LineFig() method in the hfs class. nInterp argument for this is the number of points to artificially add to make lines smooth if you wish, 1 for no interpolation (default). The spacing between things may not be perfect, most of the time the level label will overlap with a level line, can change this by changing the location of the texts from lines 678-681. 
+-Can plot transition diagram with components using the LineFig() method in the hfs class. nInterp argument for this is the number of points to artificially add to make lines smooth, 1 for no interpolation (default). The spacing between texts may not be perfect, most of the time the level label will touch a level line, can change this by changing the location of the texts from lines 678-681. 
 
--Can plot spectrum with components using the PlotSpec() method in the hfs class, put a wavenumber in the bracket and it will plot around that wavenumber.
+-Can plot spectrum using the PlotSpec() method in the hfs class, put a wavenumber in the bracket and it will plot around that wavenumber.
 
 -Use hjw() of hfs class to half all jumpwidths before Optimise(), this is convenient when performing the final optimisation of parameters, or if the initial guess is very good.
 
@@ -50,5 +50,5 @@ fits - folder containing saved plots.
 
 -The reset button of PlotGuess() doesn't seem to work in iPython.
 
--If the instrumental profile is negligible, put icut at the maximum value.
+-If the instrumental profile (Fourier transform spectroscopy only) is negligible, put icut at the maximum value.
 
