@@ -8,6 +8,7 @@
 - matplotlib 3.1.3
 - pandas 1.0.2
 - xlrd 1.1.0
+
 Should work with newer versions.
 
 # Files and explanations
