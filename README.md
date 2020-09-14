@@ -1,54 +1,50 @@
 # hfs_fit
-A python fitting program for atomic emission lines with hyperfine structure.
+**A python fitting program for atomic emission lines with hyperfine structure.
 
-----Python modules and the versions the codes are written with----:
-
--python 3.6.9
--astropy 3.0
--numpy 1.18.1
--matplotlib 3.1.3
--pandas 1.0.2
--xlrd 1.1.0
-
+# Modules and Versions
+- python 3.6.9
+- astropy 3.0
+- numpy 1.18.1
+- matplotlib 3.1.3
+- pandas 1.0.2
+- xlrd 1.1.0
 Should work with newer versions.
 
+# Files and explanations
 
-----Files and explanations----:
+1) example.py - basic usage.
 
-example.py - basic usage.
+2) fitLog.xlsx - parameters saved here when desired.
 
-fitLog.xlsx - parameters saved here when desired.
+3) hfs_fit.py - Main script that makes use of others, contains class for spectrum, contains fitting, plotting algorithms.
 
-hfs_fit.py - Main script that makes use of others, contains class for spectrum, contains fitting, plotting algorithms.
+4) interpolation.py - used for cubic spline interpolation when specified in hfs_fit.py.
 
-interpolation.py - used for cubic spline interpolation when specified in hfs_fit.py.
+5) LU.py - LU decomposition for interpolation.py.
 
-LU.py - LU decomposition for interpolation.py.
+6) matrixmult.py - matrix multiplication for LU.py.
 
-matrixmult.py - matrix multiplication for LU.py.
+7) relInt.py - routine to calculate relative intensities of HFS components, used by hfs_fit.py.
 
-relInt.py - routine to calculate relative intensities of HFS components, used by hfs_fit.py.
+8) spectrum.txt - a small portion of an UV Co II spectrum with 4 Co II lines.
 
-spectrum.txt - a small portion of an UV Co II spectrum with 4 Co II lines.
+9) fits - folder containing saved plots.
 
-fits - folder containing saved plots.
+# Useful functions and Notes
 
+- Can plot transition diagram with components using the LineFig() method in the hfs class. nInterp argument for this is the number of points to artificially add to make lines smooth, 1 for no interpolation (default). The spacing between texts may not be perfect, most of the time the level label will touch a level line, can change this by changing the location of the texts from lines 678-681. 
 
-----Useful functions and Notes----:
+- Can plot spectrum using the PlotSpec() method in the hfs class, put a wavenumber in the bracket and it will plot around that wavenumber.
 
--Can plot transition diagram with components using the LineFig() method in the hfs class. nInterp argument for this is the number of points to artificially add to make lines smooth, 1 for no interpolation (default). The spacing between texts may not be perfect, most of the time the level label will touch a level line, can change this by changing the location of the texts from lines 678-681. 
+- Use hjw() of hfs class to half all jumpwidths before Optimise(), this is convenient when performing the final optimisation of parameters, or if the initial guess is very good.
 
--Can plot spectrum using the PlotSpec() method in the hfs class, put a wavenumber in the bracket and it will plot around that wavenumber.
+- Can always re-open the sliders plot with PlotGuess() method of the hfs class. If the sliders don't work, try closing and opening it up again (this happens sometimes in iPython).
 
--Use hjw() of hfs class to half all jumpwidths before Optimise(), this is convenient when performing the final optimisation of parameters, or if the initial guess is very good.
+- Can also add points for smoothing during fitting, to do this change the nInterp value in the WNRange() method of hfs and re-import hfs.
 
--Can always re-open the sliders plot with PlotGuess() method of the hfs class. If the sliders don't work, try closing and opening it up again (this happens sometimes in iPython).
+- HFS components are plotted by default, can turn this off using PlotGuess(components = False)
 
--Can also add points for smoothing during fitting, to do this change the nInterp value in the WNRange() method of hfs and re-import hfs.
+- The reset button of PlotGuess() doesn't seem to work in iPython.
 
--HFS components are ploted by default, can turn this off using PlotGuess(components = False)
-
--The reset button of PlotGuess() doesn't seem to work in iPython.
-
--If the instrumental profile (Fourier transform spectroscopy only) is negligible, put icut at the maximum value.
+- If the instrumental profile (Fourier transform spectroscopy only) is negligible, put icut at the maximum value.
 
