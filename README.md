@@ -1,7 +1,9 @@
 # hfs_fit
 **A python fitting program for atomic emission lines with hyperfine structure (HFS).**
+
 **It has nice sliders for parameters to change the fit visually, useful when HFS constants are unknown.**
-!(fits/z3P2---a3D3 (spectrum.txt).png)
+
+<img src="fits/z3P2---a3D3 (spectrum.txt).png">
 
 # Required Modules and Versions
 - python 3.6.9
