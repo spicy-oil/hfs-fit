@@ -1,7 +1,7 @@
 # hfs_fit
 **A python fitting program for atomic emission lines with hyperfine structure.**
 
-# Modules and Versions
+# Required Modules and Versions
 - python 3.6.9
 - astropy 3.0
 - numpy 1.18.1
