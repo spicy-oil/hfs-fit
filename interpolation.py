@@ -137,21 +137,5 @@ def validate_cubic_sp():
     plt.legend()
     plt.grid()
 
-#%%
-def task():
-    '''
-    Does the required task for project A.
-    '''
-    x = np.array([-2.1, -1.45, -1.3, -0.2, 0.1, 0.15, 0.8, 1.1, 1.5 ,2.8, 3.8])
-    y = np.array([0.012155, 0.122151, 0.184520, 0.960789, 0.9900050, 0.977751, 0.527292, 
-         0.298197, 0.105399, 3.936690e-4, 5.355348e-7])
-    continuous_x = np.linspace(-2.1, 3.8, 1000)
-    spline = CS(y, x)
-    f_linear = lin_interp(continuous_x, y, x)
-    f_cubic = spline.interp(continuous_x)
-    plt.plot(x, y, 'gx', label = 'data')
-    plt.plot(continuous_x, f_linear, 'b-', label = 'linear interpolation')
-    plt.plot(continuous_x, f_cubic, 'r-', label = 'cubic spline')
-    plt.legend()
-    plt.grid()
+
     
