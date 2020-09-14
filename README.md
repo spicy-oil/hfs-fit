@@ -11,7 +11,7 @@
 
 Should work with newer versions.
 
-# Files and explanations
+# Files and Explanations
 
 1) example.py - basic usage.
 
@@ -31,7 +31,7 @@ Should work with newer versions.
 
 9) fits - folder containing saved plots.
 
-# Useful functions and Notes
+# Useful Functions and Notes
 
 - Can plot transition diagram with components using the LineFig() method in the hfs class. nInterp argument for this is the number of points to artificially add to make lines smooth, 1 for no interpolation (default). The spacing between texts may not be perfect, most of the time the level label will touch a level line, can change this by changing the location of the texts from lines 678-681. 
 
