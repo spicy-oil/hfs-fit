@@ -26,6 +26,67 @@ def satFit(fit, sat):
     return fit * np.exp(- sat * fit)
 
 
+def get_user_wavenumber():
+    """Get the users input for hfs.WNRange.
+    
+    # TODO make this something the user passes into the class instanciation
+    rathing than insiting on dynamic input.
+
+    # TODO add some descriptions as to WTF each of these options are
+    rather than assuming omniscience from the user
+
+    returns:
+        upperLevel
+        lowerLevel
+        start_wn
+        end_wn
+
+    """
+    print('Upper Level Label: ')
+    upperLevel = str(input())
+    print('Lower Level Label: ')
+    lowerLevel = str(input())
+    print('Starting wavenumber (/cm): ')
+    start_wn = float(input())
+    print('End wavenumber (/cm): ')
+    end_wn = float(input())
+    return upperLevel, lowerLevel, start_wn, end_wn
+
+
+def get_user_noise():
+    """Get the users input for hfs.Noise.
+    
+    # TODO all the todos of get_user_wavenumber here aswell
+
+    returns:
+        start_wn
+        end_wn
+        
+    """
+    print('Noise estimation starting wavenumber (/cm): ')
+    start_wn = float(input())
+    print('Noise estimation end wavenumber (/cm): ')
+    end_wn = float(input())
+    return start_wn, end_wn
+
+
+def get_user_levels():
+    """Get the users input for hfs.SetJNoLevList.
+    
+    # TODO all the todos of get_user_wavenumber here aswell
+
+    returns:
+        start_wn
+        end_wn
+        
+    """
+    print('Upper level J value: ')
+    upperJ = float(input())
+    print('Lower level J value: ')
+    lowerJ = float(input())    
+    return upperJ, lowerJ
+
+
 class hfs:
     def __init__(self, dataASCII = 'spectrum.txt', fitLog = 'fitLog.xlsx', nuclearSpin = 3.5):
         '''
@@ -85,15 +146,8 @@ class hfs:
         nInterp is number of points of even spacing between actual data to interpolate (cubic spline), set 1 for no interpolation
         note nInterp will chagne the value from DerivSum().
         '''
-        print('Upper Level Label: ')
-        self.upperLevel = str(input())
-        print('Lower Level Label: ')
-        self.lowerLevel = str(input())
+        self.upperLevel, self.lowerLevel, self.start_wn, self.end_wn = get_user_wavenumber()
         self.FitDone(self.upperLevel, self.lowerLevel)
-        print('Starting wavenumber (/cm): ')
-        self.start_wn = float(input())
-        print('End wavenumber (/cm): ')
-        self.end_wn = float(input())
         line = np.array([d for d in self.data if d[0] >= self.start_wn and d[0] <= self.end_wn])
         self.line = cp.copy(line) #original, non-normalised non-interpolated data
         self.normFactor = line[:, 1].max()
@@ -120,10 +174,7 @@ class hfs:
         Estimates noise and SNR.
         With given inputs.
         '''
-        print('Noise estimation starting wavenumber (/cm): ')
-        start_wn = float(input())
-        print('Noise estimation end wavenumber (/cm): ')
-        end_wn = float(input())
+        start_wn, end_wn = get_user_noise()
         line = np.array([d for d in self.data if d[0] >= start_wn and d[0] <= end_wn])
         line[:, 1] /= self.normFactor
         self.SNR = 1. / np.std(line[:, 1], ddof = 1)
@@ -159,10 +210,7 @@ class hfs:
         '''
         Sets J values, calculate all transitions and list in terms of F values. Relative intensity calculation.
         '''
-        print('Upper level J value: ')
-        self.upperJ = float(input())
-        print('Lower level J value: ')
-        self.lowerJ = float(input())     
+        self.upperJ, self.lowerJ = get_user_levels() 
         self.AllowedTransitions()
         self.Swing()
         self.WNRange()
