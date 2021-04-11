@@ -5,15 +5,11 @@
 
 <img src="fits/z3P2---a3D3 (spectrum.txt).png">
 
-# Required Modules and Versions
-- python 3.6.9
-- astropy 3.0
-- numpy 1.18.1
-- matplotlib 3.1.3
-- pandas 1.0.2
-- xlrd 1.1.0
+# Quickstart
 
-Should work with newer versions.
+* requires python 3.6 or higher
+* run `pip install -rrequirements.txt` to install dependencies
+* run `example.py` in an interactive python environment
 
 # Files and Explanations
 
