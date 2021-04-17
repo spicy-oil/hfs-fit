@@ -2,3 +2,6 @@
 *.code-workspace
 __pycache__
 .ipynb_checkpoints
+.tox
+.coverage
+*.egg-info

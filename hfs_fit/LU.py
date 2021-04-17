@@ -1,5 +1,5 @@
 import numpy as np
-import matrixmult as mm
+import hfs_fit.matrixmult as mm
 
 #%%
 def LU(A):

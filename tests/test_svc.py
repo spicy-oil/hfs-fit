@@ -7,9 +7,9 @@ from numpy import testing
 from hfs_fit import hfs
 
 
-@patch('hfs_fit.get_user_levels')
-@patch('hfs_fit.get_user_wavenumber')
-@patch('hfs_fit.get_user_noise')
+@patch('hfs_fit.hfs_fit.get_user_levels')
+@patch('hfs_fit.hfs_fit.get_user_wavenumber')
+@patch('hfs_fit.hfs_fit.get_user_noise')
 def test_hfs(mock_user_noise, mock_user_wavenumber, mock_user_levels):
     """Run a full test of the script."""
     # setup
