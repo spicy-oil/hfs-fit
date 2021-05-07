@@ -31,4 +31,4 @@ def test_hfs(mock_user_noise, mock_user_wavenumber, mock_user_levels):
     testing.assert_almost_equal(obj.relIntensities[-1], 1.)
     testing.assert_almost_equal(obj.fitParams[0], -5.03268524e-02)
     testing.assert_almost_equal(obj.fitParams[-2], 3.79790274e+04, decimal=3)
-    
+
