@@ -7,9 +7,15 @@ from numpy import testing
 from hfs_fit import hfs
 
 
+<<<<<<< HEAD
+@patch('hfs_fit.hfs_fit.get_user_levels')
+@patch('hfs_fit.hfs_fit.get_user_wavenumber')
+@patch('hfs_fit.hfs_fit.get_user_noise')
+=======
 @patch('hfs_fit.get_user_levels')
 @patch('hfs_fit.get_user_wavenumber')
 @patch('hfs_fit.get_user_noise')
+>>>>>>> b10b16cc946083ac2d3cf37242d37dcf2391a94d
 def test_hfs(mock_user_noise, mock_user_wavenumber, mock_user_levels):
     """Run a full test of the script."""
     # setup
@@ -31,4 +37,8 @@ def test_hfs(mock_user_noise, mock_user_wavenumber, mock_user_levels):
     testing.assert_almost_equal(obj.relIntensities[-1], 1.)
     testing.assert_almost_equal(obj.fitParams[0], -5.03268524e-02)
     testing.assert_almost_equal(obj.fitParams[-2], 3.79790274e+04, decimal=3)
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> b10b16cc946083ac2d3cf37242d37dcf2391a94d

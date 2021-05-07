@@ -3,9 +3,10 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 from astropy.modeling.models import Voigt1D
 import copy as cp
-import interpolation as interp
-import relInt as ri
 import pandas as pd
+
+import hfs_fit.interpolation as interp
+import hfs_fit.relInt as ri
 
 
 #Change in wavenumber from hfs splitting (of a fine-structure level) is given by 
