@@ -5,8 +5,8 @@ from astropy.modeling.models import Voigt1D
 import copy as cp
 import pandas as pd
 
-import hfs_fit.interpolation as interp
-import hfs_fit.relInt as ri
+#import hfs_fit.interpolation as interp
+#import hfs_fit.relInt as ri
 
 
 #Change in wavenumber from hfs splitting (of a fine-structure level) is given by 
@@ -89,7 +89,7 @@ def get_user_levels():
 
 
 class hfs:
-    def __init__(self, dataASCII = 'spectrum.txt', fitLog = 'fitLog.xlsx', nuclearSpin = 3.5):
+    def __init__(self, dataASCII = '../data/spectrum.txt', fitLog = '../data/fitLog.xlsx', nuclearSpin = 3.5):
         '''
         input strings can be directories to the files.
         dataASCII is the string of directory to asc file of spectral data
