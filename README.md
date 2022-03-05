@@ -3,7 +3,7 @@
 
 **It has nice sliders for parameters to change the fit visually, useful when HFS constants are unknown.**
 
-<img src="fits/z3P2---a3D3 (spectrum.txt).png">
+<img src="data/z3P2---a3D3 (spectrum.txt).png">
 
 # Quickstart
 
