@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import hfs_fit.LU as lu
+import LU as lu
 
 def Gaussian(x, mu, sig, A):
     '''
