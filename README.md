@@ -37,6 +37,8 @@
 
 - Can plot spectrum using the PlotSpec() method in the hfs class, put a wavenumber in the bracket and it will plot around that wavenumber.
 
+- Can plot residual using Residual() in the hfs class, e.g. class.Residual(class.paramsGuess,plot = True)
+
 - Use hjw() of hfs class to half all jumpwidths before Optimise(), this is convenient when performing the final optimisation of parameters, or if the initial guess is very good.
 
 - Can always re-open the sliders plot with PlotGuess() method of the hfs class. If the sliders don't work, try closing and opening it up again (this happens sometimes in iPython).
