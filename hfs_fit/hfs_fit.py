@@ -5,6 +5,9 @@ from astropy.modeling.models import Voigt1D
 import copy as cp
 import pandas as pd
 
+import relInt as ri
+import interpolation as interp
+
 #import hfs_fit.interpolation as interp
 #import hfs_fit.relInt as ri
 
