@@ -290,12 +290,21 @@ class hfs:
         This is reset after every call of NewFit()
         '''
         self.jumpWidths = swing
-
-    def Residual(self, params):
+        
+    def Residual(self, params, plot = False):
         '''
         rms, to be minimised, defined as the standard deviation of offsets between each observed intensity and model intensity.
         '''
         line_fit = self.FitLine(params)
+        if plot == True:
+            plt.figure()
+            plt.plot(self.w, self.i, 'ko-', label = 'line')
+            plt.plot(self.w, line_fit, 'r--', label = 'fit')
+            plt.plot(self.w, line_fit - self.i, 'r', label = 'residual')
+            plt.legend()
+            plt.grid()
+            plt.ylabel('Normalised Intensity (a.u.)')
+            plt.xlabel(r'Wavenumber cm$^{-1}$')
         return np.sqrt( ((line_fit - self.i)**2).sum() / (len(self.w) - len(self.boo) + np.sum(self.boo)) )
 
     def FitLine(self, params):
