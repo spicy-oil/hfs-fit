@@ -1,0 +1,12 @@
+.vs_code
+*.code-workspace
+__pycache__
+.ipynb_checkpoints
+<<<<<<< HEAD
+.tox
+.coverage
+*.egg-info
+
+env
+=======
+>>>>>>> b10b16cc946083ac2d3cf37242d37dcf2391a94d
