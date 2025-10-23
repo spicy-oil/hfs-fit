@@ -4,7 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hfs-fit"
-version = "0.2.0"
+version = "2.0.0"
+license = { file = "LICENSE" }
 description = "Interactive Atomic Hyperfine Structure Fitting for Fourier Transform Emission Spectra"
 readme = { file = "README.md", content-type = "text/markdown" }
 authors = [
