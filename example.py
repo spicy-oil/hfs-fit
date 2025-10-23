@@ -6,8 +6,9 @@ a = Analyser(spec='./data/example_spec.csv', spec_name='example_spec',
              log_path='./data/log.xlsx', nuclear_spin=3.5)
 # log will be created if not exists
 
-#%% Step 2: Set up a new fit with specified parameters [J_u, J_l], [upper level label, lower level label], and line region
-a.new_fit(J=[2, 2], lev=['z5S2', 'a5P2'], line_region=[37978, 37980])
+#%% Step 2: Set up a new fit with specified parameters 
+# [J_l, J_u], [lower_level_label, upper_level_label], and [start_wn, end_wn]
+a.new_fit(J=[2, 2], lev=['a5P2', 'z5S2'], line_region=[37978, 37980])
 # all need to be specified for a new fit
 
 #%% Step 3: Plot initial guess and adjust parameters interactively
@@ -18,6 +19,7 @@ a.plot_fit(A_range=80, B_range=40)  # specify ranges for A and B constants in mK
 a.optimise(5)  # multiple seeds to avoid local minima and get variance estimates, I typically use 25
 
 # plot with sliders will show again, just close it if looks fine, or adjust and fit again...
+# parameter can be accesed and edited with a.params, e.g. a.params[1] = -5e-3 changes A_l to -5 mK
 
 #%% Step 5: Save the fit results and the plot
 a.save_fit(replace=False)  # not replacing exisiting fit results for the same line

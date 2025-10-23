@@ -94,12 +94,12 @@ class Analyser:
         Call this whenever you want to fit a new line.
         Resets everything (J, A, B, Gw, etc.) so make sure you save the previous fit.
         
-        J is      [upper_J, lower_J]                      floats
-        lev is    [upper_level_label, lower_level_label]  strs
+        J is      [lower_J, upper_J]                      floats
+        lev is    [lower_level_label, upper_level_label]  strs
         region is [start_wn, end_wn]                      floats covering the line to be fitted
         '''
-        self.upper_J, self.lower_J = J
-        self.upper_level_label, self.lower_level_label = lev 
+        self.lower_J, self.upper_J = J
+        self.lower_level_label, self.upper_level_label = lev 
         self.start_wn, self.end_wn = line_region
         self.is_fitted(self.upper_level_label, self.lower_level_label)
 
@@ -245,9 +245,9 @@ class Analyser:
         self.load_log()
 
         for i, r in self.log.iterrows():
-            if r[0] == self.spec_name:
-                if r[1] == u:
-                    if r[2] == l:
+            if r.spec_name == self.spec_name:
+                if r.lev_u == u:
+                    if r.lev_l == l:
                         print('Fit of line already done')
 
     def apodise_line(self, fit):
@@ -575,7 +575,7 @@ class Analyser:
             sCoG.reset()
             sS.reset()
         button.on_clicked(reset)     
-        self.title = self.upper_level_label + '--->' + self.lower_level_label + ' at ' + str(round(self.params[7], 3)) + r'cm$^{-1}$ (' + self.spec_name + ')'
+        self.title = self.lower_level_label + r' $-$ ' + self.upper_level_label + ' at ' + str(round(self.params[7], 3)) + r'cm$^{-1}$ (' + self.spec_name + ')'
         plt.suptitle(self.title)
         if save == True:
             plt.savefig(output_dir)
@@ -593,7 +593,7 @@ class Analyser:
         self.load_log()
             
         self.line_deriv_sum = self.deriv_sum() #final wiggle index, multiply with SNR for weight.
-        fig_name = self.upper_level_label + '---' + self.lower_level_label + ' (' + self.spec_name + ').png'
+        fig_name = self.lower_level_label + r' $-$ ' + self.upper_level_label + ' (' + self.spec_name + ').png'
         
         directory = os.path.dirname(self.log_path)
         self.plot_fit(components=True, save=True, output_dir=os.path.join(directory, fig_name))
@@ -612,9 +612,9 @@ class Analyser:
         if replace == False:
             new_log = pd.concat([self.log, row], ignore_index=True)
         else:  # Replacing fit results
-            index = self.log[(self.log['Upper Level'] == self.upper_level_label) & 
-                                (self.log['Lower Level'] == self.lower_level_label) & 
-                                (self.log['Spectrum'] == self.spec_name)].index
+            index = self.log[(self.log['lev_u'] == self.upper_level_label) & 
+                                (self.log['lev_l'] == self.lower_level_label) & 
+                                (self.log['spec_name'] == self.spec_name)].index
             self.log.loc[index] = row.values.flatten()
             new_log = self.log
         new_log.to_excel(self.log_path)
