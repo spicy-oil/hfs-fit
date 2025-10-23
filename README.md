@@ -1,4 +1,4 @@
-# hfs-fit
+# HFS-FIT
 **An interactive python fitting program for atomic emission lines with hyperfine structure (HFS), the associated article is [here](https://doi.org/10.3847/1538-4365/abbdf8).**
 
 **It has sliders for parameters to change the fit visually, useful when HFS constants are unknown and we need initial guesses for optimisation (annealing included in the package).**
