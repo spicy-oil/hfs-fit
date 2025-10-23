@@ -5,7 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hfs-fit"
 version = "2.0.0"
-license = { file = "LICENSE" }
+license = "MIT"
+license-files = ["LICENSE"]
 description = "Interactive Atomic Hyperfine Structure Fitting for Fourier Transform Emission Spectra"
 readme = { file = "README.md", content-type = "text/markdown" }
 authors = [
@@ -28,3 +29,6 @@ dependencies = [
 
 keywords = ["spectroscopy", "hyperfine structure", "atomic physics", "FT emission spectra"]
 urls = { "Homepage" = "https://github.com/spicy-oil/hfs-fit" }
+
+[tool.setuptools.packages.find]
+include = ["hfs_fit"]
